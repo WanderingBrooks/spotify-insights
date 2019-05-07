@@ -1,0 +1,26 @@
+{
+  "name": "spotify-insights",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jason Brook",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint-config-starry": "7.2.0",
+    "eslint-plugin-starry": "5.0.0"
+  },
+  "dependencies": {
+    "chart.js": "2.8.0",
+    "express": "4.16.4",
+    "parcel-bundler": "1.12.3",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-router-dom": "5.0.0",
+    "react-select": "2.4.3",
+    "spotify-web-api-node": "4.0.0",
+    "tabler-react": "1.29.0"
+  }
+}
