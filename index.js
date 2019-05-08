@@ -7,4 +7,4 @@ const app = express();
 
 setRoutes( app );
 
-app.listen( 1234 );
+app.listen( process.env.PORT || 1234 );

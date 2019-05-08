@@ -15,7 +15,7 @@ class Home extends React.Component {
   }
 
   handleSelected( selected ) {
-    this.props.history.push( `${ this.state.searchBy }/${ selected.id }`, selected );
+    this.props.history.push( `${ this.state.searchBy }/${ selected }` );
   }
 
   handleSearchBy( e ) {

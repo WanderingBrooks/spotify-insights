@@ -10,9 +10,9 @@ const albumRequests =  {
     res.send( results );
   },
 
-  async getAlbumAudioFeatures( req, res ) {
-    const { id }  = req.query;
-    const results = await spotifyAPI.getAlbumAudioFeatures( id );
+  async getAlbumWithAudioFeatures( req, res ) {
+    const { id }  = req.params;
+    const results = await spotifyAPI.getAlbumWithAudioFeatures( id );
 
     res.send( results );
   }

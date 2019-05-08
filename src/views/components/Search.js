@@ -12,8 +12,7 @@ class Search extends React.Component {
     return options.map(( item, index ) => {
       return {
         label: `${ item.artists.map( ({ name }) => name ) }: ${ item.name }`,
-        value: index,
-        original: item
+        value: item.id
       };
     });
   };
@@ -23,7 +22,7 @@ class Search extends React.Component {
       if ( input ) {
         axios.get(`/api/${ this.props.searchBy }?${ qs.stringify({ title: input })}`)
           .then( ({ data }) => {
-            resolve( this.formatOptions( data.albums.items ) );
+            resolve( this.formatOptions( data[`${ this.props.searchBy }s`].items ) );
           });
       }
       else {
@@ -32,8 +31,8 @@ class Search extends React.Component {
     });
   }
 
-  handleChange({ original }) {
-    this.props.handler( original );
+  handleChange({ value }) {
+    this.props.handler( value );
   }
 
   render() {
@@ -44,7 +43,6 @@ class Search extends React.Component {
         loadOptions = { this.getOptions.bind( this ) }
         onChange    = { this.handleChange.bind( this ) }
         isDisabled  = { !this.props.searchBy }
-        isClearable = { true }
         value       = { 
           this.props.selected
             ? this.formatOptions([ this.props.selected ])

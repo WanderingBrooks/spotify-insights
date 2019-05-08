@@ -23,9 +23,9 @@ class Main extends React.Component {
     ];
 
     this.state = {
-      searchBy: this.props.searchBy,
-      selected: props.history.location.state,
-      tracks:   [],
+      searchBy: props.searchBy,
+      id:       null,
+      selected: null,
       graphs:   {},
       labels:   keys.map( key => `${ key.charAt( 0 ).toUpperCase() }${ key.slice( 1 ) }` ),
       keys
@@ -33,19 +33,21 @@ class Main extends React.Component {
   }
 
   componentWillReceiveProps( nextProps ) {
-    const selected = nextProps.history.location.state;
-    this.fetchFeatures( selected );
-  }
-
-  componentWillMount() {
-    if ( this.state.selected ) {
-      this.fetchFeatures( this.state.selected );
+    if ( this.state.id !== nextProps.id ) {
+      this.destroyGraphs();
+      this.fetchItemWithFeatures( nextProps.match.params.id );
     }
   }
 
-  fetchFeatures( selected ) {
-    axios.get(`/api/album/features?${ qs.stringify({ id: selected.id }) }`)
-      .then( ({ data }) => this.setState({ selected, tracks: data }) )
+  componentWillMount() {
+    if ( !this.state.selected ) {
+      this.fetchItemWithFeatures( this.props.match.params.id );
+    }
+  }
+
+  fetchItemWithFeatures( id ) {
+    axios.get(`/api/${ this.props.searchBy }/${ id }`)
+      .then( ({ data }) => this.setState({ id, selected: data }) )
       .catch( console.error );
   }
 
@@ -54,10 +56,13 @@ class Main extends React.Component {
     this.forceUpdate();
   }
 
-  handleSelected( selected ) {
-    const searchBy = this.state.searchBy && !this.props.searchBy ? `${ this.state.searchBy }/` : '';
+  destroyGraphs() {
     Object.values( this.state.graphs ).forEach( graph => graph.destroy() );
-    this.props.history.push( `${ searchBy }${ selected.id }`, selected );
+  }
+
+  handleItemChange( id ) {
+    const searchBy = this.state.searchBy && !this.props.searchBy ? `${ this.state.searchBy }/` : '';
+    this.props.history.push( `${ searchBy }${ id }`, this.state.selected );
   }
 
   handleSearchBy( e ) {
@@ -80,7 +85,7 @@ class Main extends React.Component {
 
               <Grid.Col>
                 <Search
-                  handler  = { this.handleSelected.bind( this ) }
+                  handler  = { this.handleItemChange.bind( this ) }
                   selected = { this.state.selected }
                   searchBy = { this.state.searchBy }
                 />
@@ -90,7 +95,6 @@ class Main extends React.Component {
         </Card>
 
         {
-          this.state.tracks &&
           this.state.selected &&
           this.state.selected.images.length > 0 &&
           <Card>
@@ -106,21 +110,21 @@ class Main extends React.Component {
                 <Grid.Col width={ 4 }>
                   <IndvStats
                     elementId = { 'bar-stats' }
-                    tracks    = { this.state.tracks }
+                    tracks    = { this.state.selected.tracks }
                     keys      = { this.state.keys }
                     labels    = { this.state.labels }
                     handler   = { this.handleGraph.bind( this ) }
-                    id        = { this.state.selected.id }
+                    id        = { this.state.id }
                   ></IndvStats>
                 </Grid.Col>
                 <Grid.Col width={ 5 }>
                   <TimeGraph
                     elementId = { 'line-stats' }
-                    tracks    = { this.state.tracks }
+                    tracks    = { this.state.selected.tracks }
                     keys      = { this.state.keys }
                     labels    = { this.state.labels }
                     handler   = { this.handleGraph.bind( this ) }
-                    id        = { this.state.selected.id }
+                    id        = { this.state.id }
                   ></TimeGraph>
                 </Grid.Col>
               </Grid.Row>
@@ -129,12 +133,13 @@ class Main extends React.Component {
         }
 
         {
-          this.state.tracks.length > 0 &&
+          this.state.selected &&
+          this.state.selected.tracks.length > 0 &&
           <Card>
             <Card.Body>
               <Grid.Col>
                 <Table
-                  tracks = { this.state.tracks }
+                  tracks = { this.state.selected.tracks }
                 ></Table>
               </Grid.Col>
             </Card.Body>
