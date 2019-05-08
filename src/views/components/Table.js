@@ -4,22 +4,34 @@ import { Table as Tabler } from "tabler-react";
 
 const Table = ( props ) => {
   return (
-    <Tabler>
+    <Tabler style={ props.style }>
       <Tabler.Header>
-        <Tabler.ColHeader key='tracks'>
-          <span>Tracks</span>
-        </Tabler.ColHeader>
+        {
+          props.headers.map( ( header ) => {
+            return (
+              <Tabler.ColHeader key={ `${ props.id }-${ header }` }>
+                <span>{ header }</span>
+              </Tabler.ColHeader>
+              );
+          })
+        }
       </Tabler.Header>
       <Tabler.Body>
         {
-          props.tracks.map( ( track ) => {
+          props.rows.map( ( row, rIndex ) => {
             return (
-              <Tabler.Row key={ track.id }>
-                <Tabler.Col key='name'>
-                  <span>{ track.name }</span>
-                </Tabler.Col>                
+              <Tabler.Row key={ `${ props.id }-${ rIndex }` }>
+                {
+                  row.map( ( column, cIndex ) => {
+                    return (
+                      <Tabler.Col key={ `${ props.id }-${ rIndex }-${ cIndex }` }>
+                        <span>{ column }</span>
+                      </Tabler.Col>
+                    );
+                  })
+                }              
               </Tabler.Row>
-            );
+            )
           })
         }
       </Tabler.Body>

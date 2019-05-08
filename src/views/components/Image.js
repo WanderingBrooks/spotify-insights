@@ -6,7 +6,14 @@ const Image = ( props ) => {
       src    = { props.url }
       width  = { props.width }
       height = { props.height }
-    ></img>
+      style  = { {
+        display:      'block',
+        marginLeft:   'auto',
+        marginRight:  'auto',
+        marginTop:    '20px',
+        marginBottom: '20px'
+      } }
+    />
   );
 };
 

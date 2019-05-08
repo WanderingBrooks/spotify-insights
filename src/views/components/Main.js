@@ -103,11 +103,20 @@ class Main extends React.Component {
                 <Grid.Col width={ 2 }>
                   <Image 
                     url    = { this.state.selected.images[ 0 ].url }
-                    width  = '200px'
-                    height = '200px'
-                  ></Image>
+                    width  = '225px'
+                    height = '225px'
+                  />
+                  <Table
+                    id      = { 'album-info' }
+                    headers = { [] }
+                    style   = {{ textAlign: 'center' }}
+                    rows    = { [
+                      [ this.state.selected.label ], 
+                      [ `Released: ${ new Date( this.state.selected.release_date ).toDateString() }` ]
+                    ] }
+                  />
                 </Grid.Col>
-                <Grid.Col width={ 4 }>
+                <Grid.Col>
                   <IndvStats
                     elementId = { 'bar-stats' }
                     tracks    = { this.state.selected.tracks }
@@ -115,9 +124,9 @@ class Main extends React.Component {
                     labels    = { this.state.labels }
                     handler   = { this.handleGraph.bind( this ) }
                     id        = { this.state.id }
-                  ></IndvStats>
+                  />
                 </Grid.Col>
-                <Grid.Col width={ 5 }>
+                <Grid.Col>
                   <TimeGraph
                     elementId = { 'line-stats' }
                     tracks    = { this.state.selected.tracks }
@@ -125,7 +134,7 @@ class Main extends React.Component {
                     labels    = { this.state.labels }
                     handler   = { this.handleGraph.bind( this ) }
                     id        = { this.state.id }
-                  ></TimeGraph>
+                  />
                 </Grid.Col>
               </Grid.Row>
             </Card.Body>
@@ -139,8 +148,10 @@ class Main extends React.Component {
             <Card.Body>
               <Grid.Col>
                 <Table
-                  tracks = { this.state.selected.tracks }
-                ></Table>
+                  id      = { 'tracks' }
+                  headers = { [ 'Tracks' ]}
+                  rows    = { this.state.selected.tracks.map( track => [ track.name ] ) }
+                />
               </Grid.Col>
             </Card.Body>
           </Card>
