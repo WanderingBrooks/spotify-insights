@@ -9,7 +9,7 @@ class Home extends React.Component {
     super( props );
 
     this.state = {
-      searchBy: null,
+      searchBy: props.initSearch,
       selected: props.history.state,
     };
   }
@@ -30,8 +30,7 @@ class Home extends React.Component {
               <Grid.Col width={ 2 }>
                 <SearchBy
                   onChange   = { this.handleSearchBy.bind( this ) }
-                  initialVal = { this.state.searchBy }
-                  options    = { [{ value: 'album', display: 'Album' }] }
+                  options    = { [{ value: 'album', display: 'Album', selected: 'selected' }] }
                 />
               </Grid.Col>
 

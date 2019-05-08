@@ -7,7 +7,11 @@ class App extends React.Component {
   render() {
     return (
       <RRD.Switch>
-        <RRD.Route exact path = '/' component = { Home } />
+        <RRD.Route
+          exact
+          path   = '/'
+          render = { ( props ) => <Home { ...props } initSearch = { 'album' } /> }
+        />
         <RRD.Route
           path   = '/album/:id'
           render = { ( props ) => <Main { ...props } searchBy = { 'album' } /> }
