@@ -9,7 +9,7 @@ class Search extends React.Component {
   }
 
   formatOptions( options ) { 
-    return options.map(( item, index ) => {
+    return options.map(( item ) => {
       return {
         label: `${ item.artists.map( ({ name }) => name ) }: ${ item.name }`,
         value: item.id

@@ -6,5 +6,7 @@ module.exports = ( app ) => {
   app.use( '/api/album',    require('./album') );
   app.use( '/api/playlist', require('./playlist') );
 
-  app.use( new Bundler('./index.html').middleware() );
+  const bundlerOptions = { production: process.env.NODE_ENV === 'production' };
+
+  app.use( new Bundler( './index.html', bundlerOptions ).middleware() );
 };
