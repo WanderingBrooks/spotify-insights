@@ -1,8 +1,8 @@
-const React    = require("react");
+const React    = require('react');
 const Search   = require('./Search');
 const SearchBy = require('./SearchBy');
 
-import { Card, Grid } from "tabler-react";
+import { Card, Grid } from 'tabler-react';
 
 class Home extends React.Component {
   constructor( props ) {

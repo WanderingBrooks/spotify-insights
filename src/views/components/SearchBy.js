@@ -5,12 +5,12 @@ const SearchBy = ( props ) => {
 
   return (
     <select
-      className = "custom-select"
-      id        = "search-by-select"
+      className = 'custom-select'
+      id        = 'search-by-select'
       onChange  = { props.onChange }
       value     = { current }
     >
-      <option value="">Search By</option>
+      <option value=''>Search By</option>
       {
         props.options.map( option => {
           return (

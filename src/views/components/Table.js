@@ -1,6 +1,6 @@
 const React = require('react');
 
-import { Table as Tabler } from "tabler-react";
+import { Table as Tabler } from 'tabler-react';
 
 const Table = ( props ) => {
   return (

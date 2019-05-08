@@ -1,4 +1,4 @@
-const React     = require("react");
+const React     = require('react');
 const Search    = require('./Search');
 const IndvStats = require('./IndvStats');
 const TimeGraph = require('./TimeGraph');
@@ -7,7 +7,7 @@ const Table     = require('./Table');
 const SearchBy  = require('./SearchBy');
 const qs        = require('querystring');
 
-import { Card, Grid } from "tabler-react";
+import { Card, Grid } from 'tabler-react';
 
 class Main extends React.Component {
   constructor( props ) {
