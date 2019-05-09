@@ -103,8 +103,6 @@ class Main extends React.Component {
                 <Grid.Col width={ 2 }>
                   <Image 
                     url    = { this.state.selected.images[ 0 ].url }
-                    width  = '225px'
-                    height = '225px'
                   />
                   <Table
                     id      = { 'album-info' }
