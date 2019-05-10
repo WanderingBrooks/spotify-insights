@@ -29,23 +29,42 @@ class LineGraph extends React.Component {
     }
   }
 
+  standardDeviation( input ) {
+    const add      = ( x, y ) => x + y;
+    const calcMean = ( nums) => nums.reduce( add , 0 ) / nums.length;
+
+    const mean      = calcMean( input );
+    const temp      = input.map( num => Math.pow( num - mean, 2 ) );
+    const deviation = Math.sqrt( calcMean( temp ) );
+
+    return deviation;
+  }
+
   generateCFG() {
+    let biggestVariation = { index: 0, val: 0 };
+
+    const datasets = this.props.keys.map( ( key, index ) => {
+      const data      = this.props.tracks.map( track => track[ key ].toFixed( 3 ) );
+      const deviation = this.standardDeviation( data.map( parseFloat ) );
+      
+      if ( deviation > biggestVariation.val ) {
+        biggestVariation = { index, val: deviation };
+      }
+
+      return {
+        label: this.props.labels[ index ],
+        data,
+        backgroundColor: this.state.lineColor[ index ],
+        borderColor: this.state.lineBorderColor[ index ],
+        ...this.state.sharedAttributes
+      }
+    });
+
     return {
       type: 'line',
       data: {
-        labels: this.props.tracks.map( ( t ) => t.name ),
-        datasets: [
-          ...this.props.keys.map( ( key, index ) => {
-            return {
-              label: this.props.labels[ index ],
-              data: this.props.tracks.map( track => track[ key ].toFixed( 3 ) ),
-              hidden: index > 0 ? true : false,
-              backgroundColor: this.state.lineColor[ index ],
-              borderColor: this.state.lineBorderColor[ index ],
-              ...this.state.sharedAttributes
-            }
-          })
-        ]
+        labels: this.props.tracks.map( ({ name }) => name ),
+        datasets: datasets.map( ( dataset, index ) => ({ ...dataset, hidden: biggestVariation.index !== index }) )
       },
       options: {
         animation: {
