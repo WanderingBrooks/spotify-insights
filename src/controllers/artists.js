@@ -5,14 +5,14 @@ const spotifyAPI = require('../resources/spotifyAPI');
 const albumRequests =  {
   async search( req, res ) {
     const { q }   = req.query;
-    const results = await spotifyAPI.searchAlbums( q );
+    const results = await spotifyAPI.searchArtists( q );
 
     res.send( results );
   },
 
-  async getAlbumWithAudioFeatures( req, res ) {
+  async getArtistWithAudioFeatures( req, res ) {
     const { id }  = req.params;
-    const results = await spotifyAPI.getAlbumWithAudioFeatures( id );
+    const results = await spotifyAPI.getArtistWithAudioFeatures( id );
 
     res.send( results );
   }

@@ -1,4 +1,5 @@
 const React = require('react');
+const RRD   = require('react-router-dom');
 
 import { Table as Tabler } from 'tabler-react';
 
@@ -25,7 +26,11 @@ const Table = ( props ) => {
                   row.map( ( column, cIndex ) => {
                     return (
                       <Tabler.Col key={ `${ props.id }-${ rIndex }-${ cIndex }` }>
-                        <span>{ column }</span>
+                        {
+                          column.path
+                            ? <RRD.Link to={ column.path }>{ column.value }</RRD.Link>
+                            : <span>{ column }</span>
+                        }
                       </Tabler.Col>
                     );
                   })

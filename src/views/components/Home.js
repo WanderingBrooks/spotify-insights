@@ -30,7 +30,10 @@ class Home extends React.Component {
               <Grid.Col width={ 2 }>
                 <SearchBy
                   onChange   = { this.handleSearchBy.bind( this ) }
-                  options    = { [{ value: 'album', display: 'Album', selected: 'selected' }] }
+                  options    = { [
+                    { value: 'album', display: 'Album', selected: 'selected' },
+                    { value: 'artist', display: 'Artist' }
+                  ] }
                 />
               </Grid.Col>
 

@@ -2,7 +2,7 @@
 
 
 const Bundler       = require('parcel-bundler');
-const staticBundler = require('../resources/staticBundler');
+const staticBundler = require('../util/staticBundler');
 const path          = require('path');
 
 let route;
