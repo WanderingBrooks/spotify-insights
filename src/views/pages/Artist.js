@@ -65,6 +65,7 @@ class Artist extends Main {
                     headers = { [] }
                     style   = {{ textAlign: 'center' }}
                     rows    = { [
+                      [ this.state.selected.name ], 
                       [ this.formatGenre( this.state.selected.genres[ 0 ] || 'No Genre Listed' ) ], 
                       [ `${ this.state.selected.followers.total } followers` ], 
                     ] }
@@ -104,7 +105,7 @@ class Artist extends Main {
                 <Table
                   id      = { 'tracks' }
                   headers = { [ 'Top Tracks' ]}
-                  rows    = { this.state.selected.topTracks.map( track => [ track.name ] ) }
+                  rows    = { this.state.selected.topTracks.map( ( track, index ) => [ `${ index + 1 }: ${ track.name }` ] ) }
                 />
               </Grid.Col>
             </Card.Body>

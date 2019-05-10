@@ -103,7 +103,7 @@ class Album extends Main {
                 <Table
                   id      = { 'tracks' }
                   headers = { [ 'Tracks' ]}
-                  rows    = { this.state.selected.tracks.map( track => [ track.name ] ) }
+                  rows    = { this.state.selected.tracks.map( ( track, index ) => [ `${ index + 1 }: ${ track.name }` ] ) }
                 />
               </Grid.Col>
             </Card.Body>
