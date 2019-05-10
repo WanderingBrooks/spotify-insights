@@ -12,7 +12,8 @@ class LineGraph extends React.Component {
         'rgba(255, 206, 86, 0.7)',
         'rgba(75, 192, 192, 0.7)',
         'rgba(153, 102, 255, 0.7)',
-        'rgba(255, 159, 64, 0.7)'
+        'rgba(255, 159, 64, 0.7)',
+        'rgba(255, 190, 200, 0.7)'
       ],
       lineBorderColor: [
         'rgba(255, 99, 132, 1)',
@@ -20,7 +21,8 @@ class LineGraph extends React.Component {
         'rgba(255, 206, 86, 1)',
         'rgba(75, 192, 192, 1)',
         'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
+        'rgba(255, 159, 64, 1)',
+        'rgba(255, 190, 200, 0.7)'
       ],
       sharedAttributes: {
         fill: false,

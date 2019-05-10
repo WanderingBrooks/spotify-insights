@@ -18,10 +18,11 @@ class Main extends React.Component {
       id:       null,
       selected: props.location.state && props.location.state[ props.searchBy ],
       graphs:   {},
-      keys,
-      labels:   keys.map( key => {
-        return `${ key.charAt( 0 ).toUpperCase() }${ key.slice( 1 ) }`;
-      })
+      keys:     [ ...keys, 'valence' ],
+      labels:   [
+        ...keys.map( key => `${ key.charAt( 0 ).toUpperCase() }${ key.slice( 1 ) }` ),
+        'Positiveness'
+      ]
     };
   }
 
