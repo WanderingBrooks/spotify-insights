@@ -1,11 +1,11 @@
 const React     = require('react');
-const Main      = require('./Main');
-const Search    = require('./Search');
-const IndvStats = require('./IndvStats');
-const TimeGraph = require('./TimeGraph');
-const Image     = require('./Image');
-const Table     = require('./Table');
-const SearchBy  = require('./SearchBy');
+const Main      = require('../components/Main');
+const Search    = require('../components/Search');
+const IndvStats = require('../components/IndvStats');
+const TimeGraph = require('../components/TimeGraph');
+const Image     = require('../components/Image');
+const Table     = require('../components/Table');
+const SearchBy  = require('../components/SearchBy');
 
 import { Card, Grid } from 'tabler-react';
 
@@ -60,7 +60,8 @@ class Album extends Main {
                       [
                         {
                           path: `/artist/${ this.state.selected.artists[ 0 ].id }`,
-                          value: this.state.selected.artists[ 0 ].name 
+                          value: this.state.selected.artists[ 0 ].name,
+                          state: { artist: this.props.location.state && this.props.location.state.artist }
                         }
                       ],
                       [ this.state.selected.label ], 

@@ -1,6 +1,6 @@
 const React    = require('react');
-const Search   = require('./Search');
-const SearchBy = require('./SearchBy');
+const Search   = require('../components/Search');
+const SearchBy = require('../components/SearchBy');
 
 import { Card, Grid } from 'tabler-react';
 

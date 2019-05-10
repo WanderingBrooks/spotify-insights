@@ -1,12 +1,12 @@
 const React     = require('react');
 const RRD       = require('react-router-dom');
-const Main      = require('./Main');
-const Search    = require('./Search');
-const IndvStats = require('./IndvStats');
-const TimeGraph = require('./TimeGraph');
-const Image     = require('./Image');
-const Table     = require('./Table');
-const SearchBy  = require('./SearchBy');
+const Main      = require('../components/Main');
+const Search    = require('../components/Search');
+const IndvStats = require('../components/IndvStats');
+const TimeGraph = require('../components/TimeGraph');
+const Image     = require('../components/Image');
+const Table     = require('../components/Table');
+const SearchBy  = require('../components/SearchBy');
 
 import { Card, Grid } from 'tabler-react';
 
@@ -131,7 +131,8 @@ class Artist extends Main {
                           [
                             {
                               path: `/album/${ album.id }`,
-                              value: album.name 
+                              value: album.name,
+                              state: { album, artist: this.state.selected }
                             }
                           ],
                           [ album.label ], 

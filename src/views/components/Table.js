@@ -28,7 +28,7 @@ const Table = ( props ) => {
                       <Tabler.Col key={ `${ props.id }-${ rIndex }-${ cIndex }` }>
                         {
                           column.path
-                            ? <RRD.Link to={ column.path }>{ column.value }</RRD.Link>
+                            ? <RRD.Link to={ { pathname: column.path, state: column.state } }>{ column.value }</RRD.Link>
                             : <span>{ column }</span>
                         }
                       </Tabler.Col>

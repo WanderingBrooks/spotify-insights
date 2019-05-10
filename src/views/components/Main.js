@@ -16,7 +16,7 @@ class Main extends React.Component {
     this.state = {
       searchBy: props.searchBy,
       id:       null,
-      selected: null,
+      selected: props.location.state && props.location.state[ props.searchBy ],
       graphs:   {},
       keys,
       labels:   keys.map( key => {

@@ -1,8 +1,8 @@
 const React  = require('react');
 const RRD    = require('react-router-dom');
-const Album  = require('./components/Album');
-const Artist = require('./components/Artist');
-const Home   = require('./components/Home');
+const Album  = require('./pages/Album');
+const Artist = require('./pages/Artist');
+const Home   = require('./pages/Home');
 
 class App extends React.Component {
   render() {
