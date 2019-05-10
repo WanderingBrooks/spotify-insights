@@ -65,7 +65,7 @@ class Artist extends Main {
                     headers = { [] }
                     style   = {{ textAlign: 'center' }}
                     rows    = { [
-                      [ this.formatGenre( this.state.selected.genres[ 0 ] ) ], 
+                      [ this.formatGenre( this.state.selected.genres[ 0 ] || 'No Genre Listed' ) ], 
                       [ `${ this.state.selected.followers.total } followers` ], 
                     ] }
                   />
