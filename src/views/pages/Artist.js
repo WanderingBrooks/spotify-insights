@@ -1,5 +1,4 @@
 const React     = require('react');
-const RRD       = require('react-router-dom');
 const Main      = require('../components/Main');
 const Search    = require('../components/Search');
 const IndvStats = require('../components/IndvStats');
@@ -20,6 +19,12 @@ class Artist extends Main {
     return words
       .map( word => `${ word.charAt( 0 ).toUpperCase() }${ word.slice( 1 ) }` )
       .join(' ');
+  }
+
+  formatFollowers( followers ) {
+    const regex = /\B(?=(\d{3})+(?!\d))/g;
+    
+    return followers.toString().replace( regex, ',' );
   }
 
   render() {
@@ -52,6 +57,15 @@ class Artist extends Main {
 
         {
           this.state.selected &&
+          <div className='main-header'>
+            <span>
+              { this.state.selected.name }
+            </span>
+          </div>
+        }
+
+        {
+          this.state.selected &&
           this.state.selected.images.length > 0 &&
           <Card>
             <Card.Body>
@@ -65,9 +79,8 @@ class Artist extends Main {
                     headers = { [] }
                     style   = {{ textAlign: 'center' }}
                     rows    = { [
-                      [ this.state.selected.name ], 
                       [ this.formatGenre( this.state.selected.genres[ 0 ] || 'No Genre Listed' ) ], 
-                      [ `${ this.state.selected.followers.total } followers` ], 
+                      [ `${ this.formatFollowers( this.state.selected.followers.total ) } followers` ], 
                     ] }
                   />
                 </Grid.Col>

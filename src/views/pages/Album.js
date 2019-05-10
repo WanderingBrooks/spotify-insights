@@ -1,4 +1,5 @@
 const React     = require('react');
+const RRD       = require('react-router-dom');
 const Main      = require('../components/Main');
 const Search    = require('../components/Search');
 const IndvStats = require('../components/IndvStats');
@@ -44,6 +45,22 @@ class Album extends Main {
 
         {
           this.state.selected &&
+          <div className='main-header'>
+            <RRD.Link
+              to={{
+                pathname: `/artist/${ this.state.selected.artists[ 0 ].id }`,
+                state:    { artist: this.props.location.state && this.props.location.state.artist } 
+              }}
+            >
+              <span>
+                { this.state.selected.artists[ 0 ].name }
+              </span>
+            </RRD.Link>
+          </div>
+        }
+
+        {
+          this.state.selected &&
           this.state.selected.images.length > 0 &&
           <Card>
             <Card.Body>
@@ -57,13 +74,7 @@ class Album extends Main {
                     headers = { [] }
                     style   = {{ textAlign: 'center' }}
                     rows    = { [
-                      [
-                        {
-                          path: `/artist/${ this.state.selected.artists[ 0 ].id }`,
-                          value: this.state.selected.artists[ 0 ].name,
-                          state: { artist: this.props.location.state && this.props.location.state.artist }
-                        }
-                      ],
+                      [ this.state.selected.name ],
                       [ this.state.selected.label ], 
                       [ `Released: ${ new Date( this.state.selected.release_date ).toDateString() }` ]
                     ] }

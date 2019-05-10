@@ -4,6 +4,7 @@ const { BrowserRouter } = require('react-router-dom');
 const App               = require('./App');
 
 import 'tabler-react/dist/Tabler.css';
+import './styles/main.css';
 
 ReactDOM.render(
   <BrowserRouter>
