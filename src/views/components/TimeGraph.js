@@ -88,7 +88,7 @@ class LineGraph extends React.Component {
           position: 'bottom'
         },
         title: {
-          text: 'Stats Per Track',
+          text: this.props.title || 'Features Per Track',
           display: true
         },
         maintainAspectRatio: false,

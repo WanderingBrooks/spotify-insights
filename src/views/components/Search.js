@@ -63,6 +63,7 @@ class Search extends React.Component {
         loadOptions = { this.getOptions.bind( this ) }
         onChange    = { this.handleChange.bind( this ) }
         isDisabled  = { !this.props.searchBy }
+        placeholder = { `Start typing an ${ this.props.searchBy }'s name` }
         value       = { 
           this.props.selected
             ? this.formatOptions([ this.props.selected ])

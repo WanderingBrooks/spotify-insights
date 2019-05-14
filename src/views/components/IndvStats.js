@@ -87,7 +87,7 @@ class IndvStats extends React.Component {
           }]
         },
         title: {
-          text: 'Average Track Stats',
+          text: this.props.title || 'Averaged Track Features',
           display: true
         },
         maintainAspectRatio: false,

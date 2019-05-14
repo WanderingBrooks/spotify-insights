@@ -1,12 +1,11 @@
 const React     = require('react');
 const RRD       = require('react-router-dom');
 const Main      = require('../components/Main');
-const Search    = require('../components/Search');
 const IndvStats = require('../components/IndvStats');
 const TimeGraph = require('../components/TimeGraph');
 const Image     = require('../components/Image');
 const Table     = require('../components/Table');
-const SearchBy  = require('../components/SearchBy');
+const Header    = require('../components/Header');
 
 import { Card, Grid } from 'tabler-react';
 
@@ -18,30 +17,12 @@ class Album extends Main {
   render() {
     return (
       <div>
-        <Card>
-          <Card.Body>
-            <Grid.Row>
-              <Grid.Col width={ 2 }>
-                <SearchBy
-                  onChange   = { this.handleSearchBy.bind( this ) }
-                  initialVal = { this.state.searchBy }
-                  options    = { [
-                    { value: 'album', display: 'Album' },
-                    { value: 'artist', display: 'Artist' }
-                  ] }
-                />
-              </Grid.Col>
-
-              <Grid.Col>
-                <Search
-                  handler  = { this.handleItemChange.bind( this ) }
-                  selected = { this.state.selected }
-                  searchBy = { this.state.searchBy }
-                />
-              </Grid.Col>
-            </Grid.Row>
-          </Card.Body>
-        </Card>
+         <Header
+          handleSearchBy   = { this.handleSearchBy.bind( this ) }
+          handleItemChange = { this.handleItemChange.bind( this ) }
+          searchBy         = { this.state.searchBy }
+          selected         = { this.state.selected }
+        />
 
         {
           this.state.selected &&

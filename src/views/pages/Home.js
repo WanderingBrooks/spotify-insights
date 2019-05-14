@@ -1,8 +1,5 @@
-const React    = require('react');
-const Search   = require('../components/Search');
-const SearchBy = require('../components/SearchBy');
-
-import { Card, Grid } from 'tabler-react';
+const React  = require('react');
+const Header = require('../components/Header');
 
 class Home extends React.Component {
   constructor( props ) {
@@ -14,7 +11,7 @@ class Home extends React.Component {
     };
   }
 
-  handleSelected( selected ) {
+  handleItemChange( selected ) {
     this.props.history.push( `${ this.state.searchBy }/${ selected }` );
   }
 
@@ -24,29 +21,12 @@ class Home extends React.Component {
 
   render() {
     return (
-        <Card>
-          <Card.Body>
-            <Grid.Row>
-              <Grid.Col width={ 2 }>
-                <SearchBy
-                  onChange   = { this.handleSearchBy.bind( this ) }
-                  options    = { [
-                    { value: 'album', display: 'Album', selected: 'selected' },
-                    { value: 'artist', display: 'Artist' }
-                  ] }
-                />
-              </Grid.Col>
-
-              <Grid.Col>
-                <Search
-                  handler  = { this.handleSelected.bind( this ) }
-                  selected = { this.state.selected }
-                  searchBy = { this.state.searchBy }
-                />
-              </Grid.Col>
-            </Grid.Row>
-          </Card.Body>
-        </Card>
+      <Header
+        handleSearchBy   = { this.handleSearchBy.bind( this ) }
+        handleItemChange = { this.handleItemChange.bind( this ) }
+        searchBy         = { this.state.searchBy }
+        selected         = { this.state.selected }
+      />
     );
   }
 }
