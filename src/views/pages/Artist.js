@@ -6,7 +6,7 @@ const Image     = require('../components/Image');
 const Table     = require('../components/Table');
 const Header    = require('../components/Header');
 
-import { Card, Grid } from 'tabler-react';
+import { Card, Grid, Loader } from 'tabler-react';
 
 class Artist extends Main {
   constructor( props ) {
@@ -43,6 +43,10 @@ class Artist extends Main {
               { this.state.selected.name }
             </span>
           </div>
+        }
+
+        {
+          !this.state.selected  && <Loader />
         }
 
         {

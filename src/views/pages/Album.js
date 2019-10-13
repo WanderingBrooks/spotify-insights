@@ -7,7 +7,7 @@ const Image     = require('../components/Image');
 const Table     = require('../components/Table');
 const Header    = require('../components/Header');
 
-import { Card, Grid } from 'tabler-react';
+import { Card, Grid, Loader } from 'tabler-react';
 
 class Album extends Main {
   constructor( props ) {
@@ -32,12 +32,17 @@ class Album extends Main {
                 pathname: `/artist/${ this.state.selected.artists[ 0 ].id }`,
                 state:    { artist: this.props.location.state && this.props.location.state.artist } 
               }}
+              onClick={() => document.body.scrollTop = document.documentElement.scrollTop = 0}
             >
               <span>
                 { this.state.selected.artists[ 0 ].name }
               </span>
             </RRD.Link>
           </div>
+        }
+
+        {
+          !this.state.selected && <Loader />
         }
 
         {

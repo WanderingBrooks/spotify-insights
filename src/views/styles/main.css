@@ -13,3 +13,19 @@
   margin-left:  10px; 
   margin-right: 15px;
 }
+
+.loader {
+  position: absolute;
+  left: calc(50% - 5em);
+  top: 50%;
+}
+
+.loader::before {
+  width: 10em;
+  height: 10em;
+}
+
+.loader::after {
+  width: 10em;
+  height: 10em;
+}

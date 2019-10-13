@@ -57,6 +57,8 @@ class Main extends React.Component {
   handleItemChange( id ) {
     const searchBy = this.state.searchBy ? `/${ this.state.searchBy }/` : '';
     this.props.history.push( `${ searchBy }${ id }`, this.state.selected );
+
+    this.setState({ selected: null });
   }
 
   handleSearchBy( e ) {
