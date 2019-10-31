@@ -1,15 +1,20 @@
 {
   "name": "spotify-insights",
+  "author": "Jason Brooks",
+  "license": "MIT",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engineStrict" : true,
+  "engines": {
+    "node": "10.15.3",
+    "npm": "6.4.1"
+  },
   "scripts": {
     "start": "node index.js",
     "postinstall": "parcel build index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Jason Brook",
-  "license": "MIT",
   "devDependencies": {
     "eslint-config-starry": "7.2.0",
     "eslint-plugin-starry": "5.0.0"

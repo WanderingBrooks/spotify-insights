@@ -1,8 +1,12 @@
 # spotify-insights
 
-App for getting spotifies calculated audio features of albums
+App for getting Spotify's calculated audio features of albums
 
 Uses Node/React/Parcel
+
+## Demo
+
+https://spotify-insights.herokuapp.com
 
 ## Installation
 * `clone the repo`
@@ -10,4 +14,5 @@ Uses Node/React/Parcel
 * get a client id and client secret from spotify read [here](https://developer.spotify.com/documentation/general/guides/authorization-guide/) on how to do that
 
 ## Usage
+
 * `clientId=${ yourClientId } clientSecret=${ yourClientSecret } npm start`
