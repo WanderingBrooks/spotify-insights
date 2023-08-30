@@ -4,10 +4,6 @@ App for getting Spotify's calculated audio features of albums
 
 Uses Node/React/Parcel
 
-## Demo
-
-https://spotify-insights.herokuapp.com
-
 ## Installation
 * `clone the repo`
 * `npm install`
